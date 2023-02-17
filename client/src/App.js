@@ -1,11 +1,26 @@
-import Header from "./components/header/Header";
-import Home from "./components/home/Home.js"
 
+import {
+  Routes,
+  Route,
+  HashRouter,
+ 
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Box from "./pages/Box.js"
 function App() {
   return (
     <>
-      <Header /> 
-      <Home />
+
+      <HashRouter >
+        <Routes>
+          <Route index element={<HomePage/>} />
+
+          <Route path="/box" element={<Box/>} />
+
+
+        </Routes>
+
+      </HashRouter>
      
     </>
 
