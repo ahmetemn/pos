@@ -6,6 +6,7 @@ import categoryRoute from "./routes/Category.js";
 import productRoute from "./routes/Products.js";
 import billRoute from "./routes/Bills.js";
 import authRoute from "./routes/Auth.js";
+import userRoute from "./routes/User.js";
 import cors from "cors";
 mongoose.set('strictQuery', true)
 const app = express();
@@ -22,7 +23,7 @@ app.use('/api/category' , categoryRoute);
 app.use('/api/product' , productRoute)
 app.use('/api/bill' , billRoute)
 app.use('/api/auth' , authRoute)
-
+app.use('/api/user' , userRoute);
 
 
 
