@@ -20,6 +20,23 @@ const Edit = ({ handleCancelEdit, isEditModalOpen, categories }) => {
 
         }
     }
+
+    const deleteCategory = (id) =>
+    {
+        
+        try {
+            fetch(`http://localhost:8800/api/category/${id}`, {
+                method:"DELETE",
+                body: JSON.stringify({  categoryId: id }),
+                headers: { "Content-type": "application/json; charset=UTF-8" },
+            })
+            message.success("Deleted Category")
+            form.resetFields()
+        } catch (error) {
+
+        }
+    
+    }
  
     const columns = [
         {
@@ -48,7 +65,9 @@ const Edit = ({ handleCancelEdit, isEditModalOpen, categories }) => {
                     <div className=" flex   gap-1">
                         <Button onClick={() => setEditingRow(record)} type="primary" >Edit</Button>
                         <Button htmlType="submit" type="default" className="color-grey-800">Save</Button>
-                        <Button danger type="primary" >Delete</Button>
+                        <Button danger type="primary"  onClick={() =>{
+                             deleteCategory(record._id)
+                        }} >Delete</Button>
                     </div>
                 )
             }
