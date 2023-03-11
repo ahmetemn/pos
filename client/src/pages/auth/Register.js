@@ -20,7 +20,26 @@ const Register = () => {
                         <Form.Item label="Password" name={"password"} rules={[{ required: true }]}>
                             <Input.Password />
                         </Form.Item>
-                        <Form.Item label="Again Password" name={"passwordAgain"} rules={[{ required: true }]}>
+                        <Form.Item
+                            name={"passwordAgain"}
+                            label="Confirm Password"
+                            dependencies={['password']}
+                            hasFeedback
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please confirm your password!',
+                                },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                    },
+                                }),
+                            ]}
+                        >
                             <Input.Password />
                         </Form.Item>
 
@@ -38,7 +57,7 @@ const Register = () => {
 
 
                 <div className="xl:w-4/6 bg-purple-900">
-                     <RegisterCarousel />
+                    <RegisterCarousel />
                 </div>
             </div>
         </div>
