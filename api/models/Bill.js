@@ -41,10 +41,11 @@ const BillSchema = new Schema({
     totalAmount:{
         type:Number,
         require:true
-    }
+    },
 
 
-} , {timestamps:true})
+
+} , {timestamps:true} )
 
 
 export default mongoose.model("bills" , BillSchema);
